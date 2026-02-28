@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>QuickFeedback - 録画一覧</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 20px 32px;
+      border-bottom: 1px solid #1e1e1e;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo { font-size: 20px; font-weight: 700; color: #ff4b4b; }
+
+    .btn-new-rec {
+      background: #ff4b4b;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+
+    .btn-new-rec:hover { background: #e03c3c; }
+
+    main { padding: 32px; max-width: 1000px; margin: 0 auto; }
+
+    h1 { font-size: 22px; font-weight: 700; margin-bottom: 24px; }
+
+    .empty {
+      text-align: center;
+      padding: 80px 0;
+      color: #555;
+    }
+
+    .empty p { font-size: 16px; margin-bottom: 8px; color: #888; }
+    .empty small { font-size: 13px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #2a2a2a;
+      transition: border-color 0.2s;
+    }
+
+    .card:hover { border-color: #444; }
+
+    .thumbnail {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      background: #111;
+    }
+
+    .thumbnail-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+    }
+
+    .card-body { padding: 14px; }
+
+    .card-date {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 4px;
+    }
+
+    .card-duration {
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 12px;
+    }
+
+    .card-actions { display: flex; gap: 8px; }
+
+    .btn-card-copy {
+      flex: 1;
+      background: #ff4b4b;
+      color: #fff;
+      border: none;
+      padding: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-card-copy:hover { background: #e03c3c; }
+    .btn-card-copy.copied { background: #22c55e; }
+
+    .btn-card-open {
+      background: #2a2a2a;
+      color: #ccc;
+      border: none;
+      padding: 8px 12px;
+      font-size: 13px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .btn-card-open:hover { background: #333; }
+
+    .btn-card-delete {
+      background: transparent;
+      color: #555;
+      border: none;
+      padding: 8px 10px;
+      font-size: 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .btn-card-delete:hover { color: #ff4b4b; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">QuickFeedback</span>
+    <button class="btn-new-rec" id="new-rec-btn">＋ 新しく録画</button>
+  </header>
+
+  <main>
+    <h1>録画一覧</h1>
+    <div id="content"></div>
+  </main>
+
+  <script src="recordings.js"></script>
+</body>
+</html>
