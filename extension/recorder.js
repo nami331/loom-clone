@@ -80,7 +80,14 @@ async function startRecording() {
   // マイク
   if (micEnabled) {
     try {
-      micStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+      micStream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+          noiseSuppression: true,
+          echoCancellation: true,
+          autoGainControl: true
+        },
+        video: false
+      });
     } catch (e) {
       alert('マイクへのアクセスが拒否されました。マイクをOFFにして録画するか、ブラウザの設定を確認してください。');
       screenStream.getTracks().forEach(t => t.stop());
