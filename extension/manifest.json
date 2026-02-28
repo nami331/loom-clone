@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "QuickFeedback",
+  "version": "1.0",
+  "description": "画面を録画してURLでシェア",
+  "permissions": ["storage"],
+  "host_permissions": ["https://api.cloudinary.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "録画を開始"
+  }
+}
